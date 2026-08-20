@@ -1,5 +1,5 @@
 // 离线缓存：首次访问后，即使断网也能打开 App
-const CACHE_NAME = "recipe-app-v1";
+const CACHE_NAME = "recipe-app-v2";
 const ASSETS = [
   "./",
   "./index.html",

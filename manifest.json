@@ -1,12 +1,12 @@
 {
-  "name": "食谱",
-  "short_name": "食谱",
-  "description": "用心烹饪，好好生活 —— 一个简洁美观的食谱应用",
+  "name": "怎么吃",
+  "short_name": "怎么吃",
+  "description": "怎么吃 —— 每天不重样的每日食谱计划",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FFFFFF",
+  "background_color": "#F6F7F8",
   "theme_color": "#07C160",
   "lang": "zh-CN",
   "icons": [

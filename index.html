@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>食谱</title>
+  <title>怎么吃</title>
 
   <!-- iOS 添加到主屏幕 / PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="食谱" />
+  <meta name="apple-mobile-web-app-title" content="怎么吃" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <meta name="theme-color" content="#07C160" />
   <link rel="manifest" href="manifest.json" />
@@ -17,51 +17,43 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 顶部导航 -->
+  <!-- 顶栏 -->
   <header class="app-header">
     <div class="header-inner">
       <div class="brand">
-        <span class="brand-logo">食</span>
+        <img class="brand-logo" src="icons/icon-192.png" alt="怎么吃" />
         <div class="brand-text">
-          <h1 class="brand-name">食谱</h1>
-          <p class="brand-slogan">今天也要好好吃饭</p>
+          <h1 class="brand-name">怎么吃</h1>
+          <p class="brand-slogan">每天不重样 · 好好吃饭</p>
         </div>
       </div>
-      <div class="header-actions">
-        <span class="header-hint">用心烹饪 · 好好生活</span>
-      </div>
+      <button id="shuffleBtn" class="shuffle-btn">🎲 今天吃什么</button>
     </div>
   </header>
 
-  <!-- 主内容 -->
   <main class="container">
-    <!-- 搜索框 -->
-    <div class="search-bar">
-      <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3" />
-      </svg>
-      <input id="searchInput" type="text" placeholder="搜索想吃的菜…" autocomplete="off" />
-      <button id="clearBtn" class="search-clear" aria-label="清空">✕</button>
-    </div>
+    <!-- 欢迎横幅 -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hero-date" id="heroDate">8月20日 · 周四</p>
+        <h2 class="hero-title">今天怎么吃？</h2>
+        <p class="hero-sub">为你排好一周不重样的菜谱，点开就能照着做</p>
+      </div>
+      <div class="hero-veggie">🥦</div>
+    </section>
 
-    <!-- 分类标签 -->
-    <nav class="chips" id="categoryChips" aria-label="分类"></nav>
+    <!-- 星期日期条 -->
+    <nav class="day-strip" id="dayStrip" aria-label="选择星期"></nav>
 
-    <!-- 食谱列表 -->
-    <section id="recipeList" class="recipe-list" aria-label="食谱列表"></section>
+    <!-- 今日概览 -->
+    <div class="day-summary" id="daySummary"></div>
 
-    <!-- 空状态 -->
-    <div id="emptyState" class="empty-state" hidden>
-      <div class="empty-emoji">🍽️</div>
-      <p>没有找到相关食谱</p>
-      <p class="empty-sub">换个关键词试试吧</p>
-    </div>
+    <!-- 分餐食谱 -->
+    <section class="meals" id="meals" aria-label="当日食谱"></section>
   </main>
 
-  <!-- 底部 -->
   <footer class="app-footer">
-    <p>食谱 · 用心做每一顿饭</p>
+    <p>怎么吃 · 用心对待每一顿饭</p>
   </footer>
 
   <!-- 详情页浮层 -->
@@ -69,6 +61,19 @@
     <div class="detail-sheet">
       <button id="detailClose" class="detail-close" aria-label="返回">‹</button>
       <div id="detailContent" class="detail-content"></div>
+    </div>
+  </div>
+
+  <!-- 随机结果弹层 -->
+  <div id="pickOverlay" class="pick-overlay" aria-hidden="true">
+    <div class="pick-card">
+      <button id="pickClose" class="pick-close" aria-label="关闭">✕</button>
+      <div class="pick-emoji" id="pickEmoji">🍖</div>
+      <h3 class="pick-title" id="pickTitle">红烧肉</h3>
+      <p class="pick-desc" id="pickDesc">肥而不腻、入口即化的经典家常硬菜。</p>
+      <div class="pick-meta" id="pickMeta">⏱ 90 分钟 · 中等 · 3 人份</div>
+      <button id="pickDetail" class="pick-btn">查看做法 →</button>
+      <button id="pickAgain" class="pick-again">🎲 换一个</button>
     </div>
   </div>
 
