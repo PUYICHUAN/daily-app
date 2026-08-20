@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>食谱</title>
+
+  <!-- iOS 添加到主屏幕 / PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="食谱" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="theme-color" content="#07C160" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-logo">食</span>
+        <div class="brand-text">
+          <h1 class="brand-name">食谱</h1>
+          <p class="brand-slogan">今天也要好好吃饭</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="header-hint">用心烹饪 · 好好生活</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="container">
+    <!-- 搜索框 -->
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3" />
+      </svg>
+      <input id="searchInput" type="text" placeholder="搜索想吃的菜…" autocomplete="off" />
+      <button id="clearBtn" class="search-clear" aria-label="清空">✕</button>
+    </div>
+
+    <!-- 分类标签 -->
+    <nav class="chips" id="categoryChips" aria-label="分类"></nav>
+
+    <!-- 食谱列表 -->
+    <section id="recipeList" class="recipe-list" aria-label="食谱列表"></section>
+
+    <!-- 空状态 -->
+    <div id="emptyState" class="empty-state" hidden>
+      <div class="empty-emoji">🍽️</div>
+      <p>没有找到相关食谱</p>
+      <p class="empty-sub">换个关键词试试吧</p>
+    </div>
+  </main>
+
+  <!-- 底部 -->
+  <footer class="app-footer">
+    <p>食谱 · 用心做每一顿饭</p>
+  </footer>
+
+  <!-- 详情页浮层 -->
+  <div id="detailOverlay" class="detail-overlay" aria-hidden="true">
+    <div class="detail-sheet">
+      <button id="detailClose" class="detail-close" aria-label="返回">‹</button>
+      <div id="detailContent" class="detail-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
